@@ -22,8 +22,27 @@ def fade_in_out(signal, fade_length=3000):
 
     return signal
 
-def sawtooth(x):
-    return (x + np.pi) / np.pi % 2 -1
+#Waveform definitions
+def sine_wave(x):
+    return np.sin(x)
+
+def sawtooth_wave(x):
+    return 2 * ((x / (2 * np.pi)) % 1) - 1 
+
+def reverse_sawtooth_wave(x):
+    return 1 - 2 * ((x / (2 * np.pi)) % 1)
+
+def square_wave(x):
+    return np.sign(np.sin(x))
+
+def pulse_wave(x, duty=0.5):
+    return np.where(np.sin(x)> np.cos(duty * np.pi), 1,-1)
+
+def triangle_wave(x):
+    return 2 * np.abs(2 * (x / (2 * np.pi) % 1) - 1) - 1
+
+def custom_wave(x):
+    return 0.6 * sine_wave(x) + 0.3 * sawtooth_wave(x) + 0.1 * triangle_wave(len(x))
 
 def main():
     sample_rate = 44100
@@ -31,7 +50,7 @@ def main():
     t = 3
 
     #change between np.sin for Sine Wave and sawtooth for Sawtooth Wave
-    waveform = sawtooth
+    waveform = triangle_wave
 
     wavetable_length = 64
     wave_table = np.zeros((wavetable_length,))
@@ -55,7 +74,7 @@ def main():
 
     output = fade_in_out(output)
      
-    wav.write('saw440HzInterpolatedLinearlyFaded4.wav', sample_rate, output.astype(np.float32))
+    wav.write('triangle440HzInterpolatedLinearlyFaded.wav', sample_rate, output.astype(np.float32))
 
 if __name__== '__main__':
     main()
