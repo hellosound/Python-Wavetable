@@ -1,28 +1,64 @@
 # Wavetable Synthesis Project
 
-## Description
+Waveform Synthesis in Python
 
-This project generates a sine wave at 440 Hz (the standard A note) using wavetable synthesis. It utilizes NumPy for efficient computation and SciPy to save the generated audio to a `.wav` file. The generated audio file is a 3-second sine wave at 440 Hz.
+This project demonstrates basic waveform synthesis using NumPy and SciPy. It generates an audio waveform using a wavetable approach, applies linear interpolation, and implements a fade-in and fade-out effect before saving the output as a WAV file.
 
-## Current Status
 
-- This project is still a work in progress.
-- Currently, the focus is on implementing basic wavetable synthesis, and it can generate a simple sine wave.
+Features
 
-## Requirements
+Implements various waveform types:
 
-- Python 3.x
-- NumPy
-- SciPy
+Sine wave
 
-You can install the required dependencies using:
+Sawtooth wave
 
-```bash
+Reverse sawtooth wave
+
+Square wave
+
+Pulse wave (with duty cycle control)
+
+Triangle wave
+
+Custom wave (combining sine, sawtooth, and triangle)
+
+Uses a wavetable synthesis approach for efficient waveform generation.
+
+Applies linear interpolation for smoother playback.
+
+Implements fade-in and fade-out effects to reduce audio artifacts.
+
+Saves the generated waveform as a 32-bit floating-point WAV file.
+
+
+Requirements
+
+Ensure you have Python installed along with the required libraries:
+
 pip install numpy scipy
 
-#How to use
 
-1. Clone or download the repository.
-2. Run the Python script to generate a sine wave sound at 440 Hz. (Command: python wavetable_synth.py)
-3. The script will generate a file named `sine440Hz.wav` in the same directory.
+Usage
 
+Run the script using:
+
+python PythonWavetable.py
+
+This will generate a 440Hz triangle wave, apply interpolation and fading.
+
+
+Customization
+
+Change the waveform function in main() to generate different wave types.
+
+Modify f to set a different frequency.
+
+Adjust t to change the duration of the sound.
+
+Modify gain to control output amplitude.
+
+
+SLicense
+
+This project is released under the MIT License.
